@@ -1,23 +1,22 @@
 const Clients = require("../models/Clients")
 
 //Add a new client
+
 exports.newClient =  async (req, res, next) => {
     //new instance of the client, body to map each field
    const client = new Clients(req.body)
-
-   try{
+  try {
        //store the reg
        await client.save()
        res.json({message: "sucessfully added to the db"})
-
-   } catch(error){
+   } catch(error) {
        console.log(error)
        next()
-
    }
 }
 
 //Show all clients
+
 exports.showClients = async (req, res, next) => {
     try {
         //pass an emty object that'll be fullfill with the info of the clients
@@ -42,7 +41,7 @@ exports.showClientById = async (req, res, next) => {
     res.json(client)
 }
 
-// update clien by id
+// update client by id
 
 exports.updateClient = async (req, res, next) => {
     try {
